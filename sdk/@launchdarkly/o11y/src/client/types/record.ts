@@ -1,4 +1,8 @@
-import type { IntegrationOptions, SessionShortcutOptions } from './client'
+import type {
+	IntegrationOptions,
+	NetworkRecordingOptions,
+	SessionShortcutOptions,
+} from './client'
 import type {
 	CommonOptions,
 	PrivacySettingOption,
@@ -33,6 +37,14 @@ export type RecordOptions = CommonOptions & {
 	 * @example tracingOrigins: ['localhost', /^\//, 'backend.myapp.com']
 	 */
 	tracingOrigins?: boolean | (string | RegExp)[]
+	/**
+	 * Specifies how and what the SDK records from network requests and responses
+	 * in the session replay Network tab. This is separate from the observability
+	 * plugin's `networkRecording` option, which controls what is attached to
+	 * traces. To record headers and bodies in both places, set it on both plugins.
+	 * @see {@link https://launchdarkly.com/docs/sdk/features/session-replay-config#record-network-request-headers-and-bodies} for more information.
+	 */
+	networkRecording?: boolean | NetworkRecordingOptions
 	/**
 	 * If set, the SDK will not record when your app is not visible (in the background).
 	 * By default, the SDK will record in the background.
